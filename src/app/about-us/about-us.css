@@ -1,0 +1,12 @@
+.about_count_area_bg
+{
+    background: url(/images/about_count_bg.jpg) center no-repeat;
+    background-size: cover;
+}
+.subpage_header {
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }

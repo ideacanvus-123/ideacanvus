@@ -1,0 +1,11 @@
+.privacy_policy_body p
+{
+    margin-top: 20px;
+}
+.subpage_header {
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }

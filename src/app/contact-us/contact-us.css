@@ -1,0 +1,14 @@
+.contact_bottom {
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+  .subpage_header {
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
