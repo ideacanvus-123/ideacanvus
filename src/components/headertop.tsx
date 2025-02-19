@@ -112,9 +112,9 @@ export default function Headertop() {
           }`}>
           <Navbar fluid rounded className="navbar">
             <NavbarBrand href="/">
-              <Image src="../images/logo.svg" className="NavbarBrand w-20" width={50} height={50} alt="Logo" />
+              <Image src="../images/icon.jpg" className="NavbarBrand w-20" width={500} height={500} alt="Logo" />
             </NavbarBrand>
-
+ 
             <NavbarToggle />
 
             <NavbarCollapse className="Navbar_edit">

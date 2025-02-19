@@ -36,7 +36,7 @@ a {
     transition: 0.5s;
     outline-style: none;
     text-decoration: none;
-    color: #63A027;
+    color: #A084E8;
 }
 
 a:hover,
@@ -103,7 +103,7 @@ section {
 }
 .home_about_text h3
 {
-    color: #63A027;
+    color: #A084E8;
     font-size: 22px;
 }
 .home_about_text h2
@@ -157,7 +157,7 @@ section {
     display: block;
     float: left;
     width: 100%;
-    background: url(/images/home_service_bg.jpg) no-repeat;
+    background: url(/images/background.png) no-repeat;
     background-size: cover;
     background-attachment: fixed;
     padding: 60px 0;
@@ -360,14 +360,14 @@ section {
 
 .but_style1
 {
-    background: #63A027;
+    background: #A084E8;
     color: #fff;
     padding: 10px 50px;
     display: inline-block;
     vertical-align: top;
     border-radius: 30px;
     border: none;
-    border: 1px solid #63A027;
+    border: 1px solid #A084E8;
 }
 .but_style1:hover
 {
@@ -377,17 +377,17 @@ section {
 }
 .but_style1_line
 {
-    color: #63A027;
+    color: #A084E8;
     padding: 10px 50px;
     display: inline-block;
     vertical-align: top;
     border-radius: 30px;
     border: none;
-    border: 1px solid #63A027;
+    border: 1px solid #A084E8;
 }
 .but_style1_line:hover
 {
-    background: #63A027;
+    background: #A084E8;
     color: #fff;
 }
 
@@ -586,7 +586,7 @@ section {
 }
 .footer_top_section .box1 ul li:hover
 {
-  color: #63A027; 
+  color: #A084E8; 
 }
 .footer_top_section .box1 ul li a
 {
@@ -595,7 +595,7 @@ section {
 }
 .footer_top_section .box1 ul li a:hover
 {
-    color: #63A027;
+    color: #A084E8;
 }
 .footer_bottom_section
 {
@@ -625,11 +625,11 @@ section {
 }
 .footer_bottom_section .box1 ul li a:hover
 {
-    color: #63A027;
+    color: #A084E8;
 }
 .footer_bottom_section .box1 ul i
 {
-    color: #63A027;
+    color: #A084E8;
 }
 
 .footer_bottom_section .box2
@@ -653,11 +653,11 @@ section {
 }
 .footer_bottom_section .box2 ul li a:hover
 {
-    color: #63A027;
+    color: #A084E8;
 }
 .footer_bottom_section .box2 ul i
 {
-    color: #63A027;
+    color: #A084E8;
 }
 .footer_bottom_section .box2 ul li
 {
@@ -690,7 +690,7 @@ section {
 }
 .footer_bottom_section .box3 p a:hover
 {
-    color: #63A027;
+    color: #A084E8;
 }
 .footer_qr_section
 {
@@ -830,7 +830,7 @@ section {
   float: left;
   width: 22px;
   height: 22px;
-  background: #63A027;
+  background: #A084E8;
   border: 1px solid #fff;
   border-radius: 100%;
   position: absolute;
@@ -855,7 +855,7 @@ section {
 
 .header_nevigation_section .active
 {
-  color: #63A027 !important;
+  color: #A084E8 !important;
 }
 .header_nevigation_section a
 {
@@ -863,14 +863,14 @@ section {
 }
 .header_nevigation_section a:hover
 {
-  color: #63A027 !important;
+  color: #A084E8 !important;
 }
 .nav_login_but
 {
     display: inline-block;
     vertical-align: middle;
     padding: 10px 25px !important;
-    background: #63A027;
+    background: #A084E8;
     color: #fff;
     border-radius: 50px;
     margin-left: 10px;
@@ -965,7 +965,7 @@ section {
 }
 .profile_drop ul li a:hover ,.profile_drop ul li:hover
 {
-    color: #63A027;
+    color: #A084E8;
 }
 .profile_drop ul li i
 {
@@ -1001,14 +1001,14 @@ section {
 }
 .location_search .fa-location-crosshairs
 {
-  color: #63A027;
+  color: #A084E8;
   font-size: 20px;
   margin-top: 0;
   display: inline-block;
   vertical-align: top;
 }
 [type='checkbox']:checked, [type='radio']:checked, .dark [type='checkbox']:checked, .dark [type='radio']:checked {  
-  color: #63A027;
+  color: #A084E8;
 }
 .homepage_from_section {
   display: block;
@@ -1016,7 +1016,7 @@ section {
   width: 100%;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0px 4px 24.4px 0px #63a02730;
+  box-shadow: 0px 4px 24.4px 0px #A084E830;
   margin-top: -150px;
 }
 .homepage_from_section_top_area {
@@ -1219,7 +1219,7 @@ section {
 }
 .black_but:hover
 {
-    background: #63A027;
+    background: #A084E8;
     color: #fff;
 }
 
@@ -1369,7 +1369,7 @@ section {
 }
 .book_appointment_but 
 {
-    background: #63A027;
+    background: #A084E8;
     color: #fff;
     padding: 7px 30px;
     display: inline-block;
@@ -1385,7 +1385,7 @@ section {
 
 .book_appointment_but2
 {
-    background: #63A027;
+    background: #A084E8;
     color: #fff;
     padding: 7px 30px;
     display: inline-block;
@@ -1758,7 +1758,7 @@ section {
 }
 .close_but button:hover
 {
-  background: #63A027;
+  background: #A084E8;
   color: #fff; 
 }
 
@@ -1860,13 +1860,13 @@ section {
     vertical-align: top;
     border-radius: 30px;
     border: none;
-    border: 1px solid #63A027;
+    border: 1px solid #A084E8;
 }
 .but_style2:hover
 {
-    background: #63A027 !important;
+    background: #A084E8 !important;
     color: #fff !important;
-    border: 1px solid #63A027 !important;
+    border: 1px solid #A084E8 !important;
 }
 .but_style1:hover
 {
