@@ -70,7 +70,7 @@ const HomePageComponent = () => {
       </section>
 
       <section className="home_about_section">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4">  
           <div className="homepage_from_section">
             {/* <ModalWrapperProps data={filterData} /> */}
           </div>
