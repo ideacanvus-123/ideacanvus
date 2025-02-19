@@ -92,9 +92,8 @@ const HomePageComponent = () => {
             <div className="home_about_text md:w-2.5/4 text-center md:text-start">
               <h3>About us</h3>
               <h2 className="text-3xl md:text-3xl lg:text-6xl">Who We Are<br /></h2>
-              <p>Idea Canvus is a visionary startup dedicated to providing cutting-edge IT services tailored to modern business needs. We specialize in delivering innovative solutions, from web development and cloud computing to AI-driven automation and digital transformation strategies.
-
-                At Idea Canvus, we believe in turning creative ideas into reality by leveraging technology to drive growth and efficiency. Whether you're a startup looking to establish a digital presence or an enterprise seeking scalable IT solutions, our team is here to empower your journey.</p>
+              <p>Welcome to <b>Ideacanvus</b>, your trusted partner for innovative software solutions and professional logo design. We specialize in crafting cutting-edge software that streamlines business operations, enhances user experiences, and drives growth. Whether you're a startup or an established enterprise, our team is dedicated to delivering tailored solutions that meet your unique needs. In addition to software development, we offer top-tier logo design services to help businesses establish a strong brand identity.</p>
+              <p>At <b>Ideacanvus</b>, we believe in quality, efficiency, and customer satisfaction. Let’s bring your ideas to life with smart technology and impactful designs.</p>
               <ul>
                 <li>Innovate</li>
                 <li>Build</li>
