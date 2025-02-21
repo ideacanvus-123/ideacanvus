@@ -551,200 +551,38 @@ section {
     font-weight: 700; 
     color: #000;  
 }
-.footer
-{
-    display: block;
-    float: left;
-    width: 100%;
-    background: #0d3c4b;
-    color: #fff;
-}
-.footer_top_section
-{
-    display: block;
-    float: left;
-    width: 100%;
-    padding: 40px 0 0 0 ;
+footer {
+  background-color: #0D1B2A; /* Deep Navy */
+  color: #E0E1DD; /* Light Gray */
+  padding: 40px 20px;
+  text-align: center;
 }
 
-.footer_top_section .box1
-{
-    display: block;
-    float: left;
-    width: 100%;
-    margin: 15px 0;
-}
-.footer_top_section .box1 ul
-{
-    list-style-type: none;
-}
-.footer_top_section .box1 ul li
-{
-    margin: 1px 0;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.footer_top_section .box1 ul li:hover
-{
-  color: #A084E8; 
-}
-.footer_top_section .box1 ul li a
-{
-    color: #fff;
-    cursor: pointer;
-}
-.footer_top_section .box1 ul li a:hover
-{
-    color: #A084E8;
-}
-.footer_bottom_section
-{
-    display: block;
-    float: left;
-    width: 100%;
-    padding: 40px 0;
-}
-.footer_bottom_section .box1
-{
-    display: block;
-    float: left;
-    width: 100%;
-    margin: 15px 0;
-}
-.footer_bottom_section .box1 ul
-{
-    list-style-type: none;
-}
-.footer_bottom_section .box1 ul li
-{
-    margin: 1px 0;
-}
-.footer_bottom_section .box1 ul li a
-{
-    color: #fff;
-}
-.footer_bottom_section .box1 ul li a:hover
-{
-    color: #A084E8;
-}
-.footer_bottom_section .box1 ul i
-{
-    color: #A084E8;
+footer a {
+  color: #00A8E8; /* Bright Blue */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease-in-out;
 }
 
-.footer_bottom_section .box2
-{
-    display: block;
-    float: left;
-    width: 100%;
-    margin: 15px 0;
-}
-.footer_bottom_section .box2 ul
-{
-    list-style-type: none;
-}
-.footer_bottom_section .box2 ul li
-{
-    margin: 1px 0;
-}
-.footer_bottom_section .box2 ul li a
-{
-    color: #fff;
-}
-.footer_bottom_section .box2 ul li a:hover
-{
-    color: #A084E8;
-}
-.footer_bottom_section .box2 ul i
-{
-    color: #A084E8;
-}
-.footer_bottom_section .box2 ul li
-{
-    position: relative;
-    padding-left: 25px;
-}
-.footer_bottom_section .box2 ul li i
-{
-    position: absolute;
-    left: 0;
-    top: 0;
+footer a:hover {
+  color: #F4A261; /* Warm Orange */
 }
 
-.footer_bottom_section .box3
-{
-    display: block;
-    float: left;
-    width: 100%;
-    margin: 15px 0;
+footer h3 {
+  color: #FFFFFF; /* White for headings */
+  margin-bottom: 10px;
 }
-.footer_bottom_section .box3 p
-{
-    margin-top: 10px;
+
+footer .contact-icons {
+  color: #00A8E8; /* Matching icons with links */
+  margin-right: 8px;
 }
-.footer_bottom_section .box3 p a
-{
-    font-weight: bold;
-    color: #fff;
-    text-decoration: underline;
+
+footer .contact-icons:hover {
+  color: #F4A261; /* Icon hover effect */
 }
-.footer_bottom_section .box3 p a:hover
-{
-    color: #A084E8;
-}
-.footer_qr_section
-{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    float: left;
-    width: 100%;
-}
-.footer_qr_section .box1
-{
-    display: inline-block;
-    vertical-align: top;
-    width: 114px;
-    margin-top: 20px;
-    margin-right: 15px;
-}
-.footer_qr_section .box1 .qr
-{
-    display: block;
-    float: left;
-    width: 100%;
-    height: 114px;
-    background: #fff;
-    border-radius: 15px;
-    padding: 5px;
-}
-.footer_qr_section .box1 .qr img
-{
-    float: left;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-}
-.footer_qr_section .box1 .app_link_but
-{
-    display: block;
-    float: left;
-    width: 100%;
-    margin-top: 12px;
-}
-.footer_qr_section .box1 .app_link_but img
-{
-  width: 100%;
-}
-.footer_copy_section
-{
-    display: block;
-    float: left;
-    width: 100%;
-    padding: 20px 0;
-    border-top: 1px solid #ffffff6d;
-}
+
 
 .homepage_slider_section {
   display: block;
@@ -1922,3 +1760,24 @@ section {
 {
   filter: brightness(0) invert(1);  
 }
+
+
+/* Carousel Styles */
+.homepage_slider_section {
+  @apply relative overflow-hidden;
+}
+
+.carousel-caption {
+  @apply px-4 md:px-12;
+}
+
+.carousel-caption h2 {
+  @apply text-shadow-lg;
+}
+
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+

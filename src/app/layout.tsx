@@ -3,6 +3,14 @@ import './media_screen.css'
 import 'react-toastify/dist/ReactToastify.css'
 import Script from 'next/script'
 import Head from 'next/head'
+import { Inter } from "next/font/google"
+
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata = {
+  title: "IdeaCanvus - IT Services & Solutions",
+  description: "Idea Canvus specializes in innovative IT solutions, cloud computing, and digital transformation strategies",
+}
 
 export default function RootLayout({  
   children,
@@ -11,8 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <title>Idea Canvas - Your Trusted IT Solutions Provider</title>
+        <title>Idea Canvas - Transform your business with cutting-edge technology solutions</title>
         <meta name="description" content="Idea Canvas specializes in innovative IT solutions, cloud computing, and digital transformation strategies." />
+        
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -27,7 +36,7 @@ export default function RootLayout({
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
       </head>
       
-      <body>
+      <body className={inter.className}>  
         {children}
         
         {/* Load JavaScript files */}
@@ -37,3 +46,6 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+

@@ -69,9 +69,9 @@ export default function Headertop() {
 
   const isActive = (route: string) => pathname === route;
 
-  // const handleComingSoon = () => {
-  //   showInfoToast("Coming soon");
-  // };
+  const handleComingSoon = () => {
+    showInfoToast("Coming soon");
+  };
 
 
   return (
@@ -79,9 +79,9 @@ export default function Headertop() {
       <div className="container mx-auto px-4">
         <div className="header_top">
           <div className="left">
-            <p>
+            {/* <p>
               <ModalWrapper />
-            </p>
+            </p> */}
           </div>
           <div className="right">
           
@@ -130,22 +130,20 @@ export default function Headertop() {
               <Link href="/appointment" className={isActive('/appointment') ? 'active' : ''}>
                 Appointment
               </Link> */}
-              <Link href="/contact-us" className={isActive('/contact-us') ? 'active' : ''}>
+              {/* <Link href="/contact-us" className={isActive('/contact-us') ? 'active' : ''}>
                 Contact Us
-              </Link>
+              </Link> */}
 
-              {/* <button onClick={handleComingSoon} className="hover:text-black-2000 font-bold">
-                Appointment
-              </button>
+           
               <button onClick={handleComingSoon} className="hover:text-black-2000 font-bold">
                 Contact Us
-              </button> */}
+              </button>
 
-              {!isLoggedIn && (
+              {/* {!isLoggedIn && (
                 <Link href="/signin">
                   <Button className="nav_login_but">Login</Button>
                 </Link>
-              )}
+              )} */}
             </NavbarCollapse>
           </Navbar>
         </div>

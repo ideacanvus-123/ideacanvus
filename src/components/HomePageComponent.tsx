@@ -1,18 +1,10 @@
-'use client';
+"use client"
 
-import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import Headertop from '@/components/headertop';
-import Image from 'next/image';
-// import { Carousel } from 'flowbite-react';
-import PetServicesTabs from '@/components/PetServicesTabs';
-import { LoaderSpinner } from '@/components/loader';
-import { HOME_PAGE_DETAILS_ENDPOINT } from '@/constants/constants';
-import LocalSittersSection from '@/components/LocalSittersSection';
-
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
+import Image from "next/image"
+import { ArrowRight, Code, Laptop, LineChart, Server } from "lucide-react"
+import { Button } from "flowbite-react"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 
 const responsive = {
   desktop: {
@@ -28,146 +20,172 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
   },
-};
+}
 
-const HomePageComponent = () => {
+const carouselItems = [
+  {
+    title: "Turning ideas into digital excellence",
+    image: "/images/homebanner.jpg",
+    description: "Innovative IT solutions for modern businesses",
+  },
+  {
+    title: "Your vision, our expertise",
+    image: "/images/banner-4.jpg",
+    description: "Custom software development that drives growth",
+  },
+  {
+    title: "Building tomorrow's technology",
+    image: "/images/bannerimage.jpg",
+    description: "Cloud solutions and digital transformation",
+  },
+]
 
+const services = [
+  {
+    icon: <Code className="h-8 w-8" />,
+    title: "Custom Software Development",
+    description: "Tailored solutions to meet your specific business needs",
+  },
+  {
+    icon: <Laptop className="h-8 w-8" />,
+    title: "Web Development",
+    description: "Modern, responsive websites and web applications",
+  },
+  {
+    icon: <Server className="h-8 w-8" />,
+    title: "Cloud Solutions",
+    description: "Scalable cloud infrastructure and migration services",
+  },
+  {
+    icon: <LineChart className="h-8 w-8" />,
+    title: "Digital Transformation",
+    description: "Modernize your business with digital solutions",
+  },
+]
 
-  // if (loading) {
-  //   return (
-  //     <div>
-  //       <LoaderSpinner />
-  //       <p>Loading homepage data...</p>
-  //     </div>
-  //   );
-  // }
-
-
-
+export default function Home() {
   return (
-    <>
-      <Headertop />
+    <main className="flex min-h-screen flex-col">
+      {/* Hero Carousel Section */}
       <section className="homepage_slider_section">
         <div className="h-screen">
-          {/* <Carousel slide={true} indicators={true} > */}
-          <Carousel
-            responsive={responsive}
-            infinite={true}
-            autoPlay
-            autoPlaySpeed={3000}
-
-          >
-
-            <div key={1} className="block relative h-full items-center">
-              <div className="carousel-caption">
-                <h2 className="text-3xl md:text-4xl lg:text-7xl text-blue">Turning ideas into reality</h2>
+          <Carousel responsive={responsive} infinite={true} autoPlay autoPlaySpeed={3000} className="h-full">
+            {carouselItems.map((item, index) => (
+              <div key={index} className="relative h-screen">
+                <Image
+                  src={item.image || "/placeholder.svg"}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="carousel-caption absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-7xl  mb-4">{item.title}</h2>
+                  <p className="text-xl md:text-2xl text-gray-200">{item.description}</p>
+                  <Button size="lg" className="mt-8 bg-yellow-300 hover:bg-yellow-400 text-white">
+                    Get Started
+                    <ArrowRight className="ml-2" />
+                  </Button>
+                </div>
               </div>
-              <Image width={200} height={200} src={"/images/homebanner.jpg"} alt="" loading="lazy" />
-            </div>
-            <div key={1} className="block relative h-full items-center">
-              <div className="carousel-caption">
-                <h2 className="text-3xl md:text-4xl lg:text-7xl text-blue">Your ideas our responsiblity</h2>
-              </div>
-              <Image width={200} height={200} src={"/images/itindustry.jpg"} alt="" loading="lazy" />
-            </div>
-
-            <div key={1} className="block relative h-full items-center">
-              <div className="carousel-caption">
-                <h2 className="text-3xl md:text-4xl lg:text-7xl text-blue">Bringing your brand to life.</h2>
-              </div>
-              <Image width={200} height={200} src={"/images/sitters_deails_header.jpg"} alt="" loading="lazy" />
-            </div>
-
+            ))}
           </Carousel>
         </div>
       </section>
 
-      <section className="home_about_section">
+      {/* About Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="homepage_from_section">
-            {/* <ModalWrapperProps data={filterData} /> */}
-          </div>
-
-          <div className="w-full flex flex-col-reverse md:flex-row items-center mt-10 float-start">
-            <div className="home_about_text md:w-2.5/4 text-center md:text-start">
-              <h3>About us</h3>
-              <h2 className="text-3xl md:text-3xl lg:text-6xl">Who We Are<br /></h2>
-              <p>Welcome to <b>Ideacanvus</b>, your trusted partner for innovative software solutions and professional logo design. We specialize in crafting cutting-edge software that streamlines business operations, enhances user experiences, and drives growth. Whether you're a startup or an established enterprise, our team is dedicated to delivering tailored solutions that meet your unique needs. In addition to software development, we offer top-tier logo design services to help businesses establish a strong brand identity.</p>
-              <p>At <b>Ideacanvus</b>, we believe in quality, efficiency, and customer satisfaction. Let’s bring your ideas to life with smart technology and impactful designs.</p>
-              <ul>
-                <li>Innovate</li>
-                <li>Build</li>
-                <li>Transform</li>
-                <li>Digitalise</li>
-              </ul>  
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="md:w-1/2">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon.jpg-PydKIvBqtvRdfNwX2LjL6hI7TUseSh.jpeg"
+                alt="IdeaCanvus Logo"
+                width={300}
+                height={120}
+                className="mb-6"
+              />
+              <h2 className="text-3xl md:text-4xl mb-6">Who We Are</h2>
+              <p className="text-gray-600 text-lg mb-6">
+                IdeaCanvus is your trusted technology partner, delivering innovative IT solutions that help businesses
+                thrive in the digital age. We combine technical expertise with creative problem-solving to transform
+                your ideas into powerful digital solutions.
+              </p>
+              <ul className="grid grid-cols-2 gap-4">
+                <li className="flex items-center text-blue-600">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  Innovate
+                </li>
+                <li className="flex items-center text-blue-600">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  Build
+                </li>
+                <li className="flex items-center text-blue-600">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  Transform
+                </li>
+                <li className="flex items-center text-blue-600">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  Deliver
+                </li>
+              </ul>
             </div>
-
-            <div className="home_about_img_area md:w-1.5/4 content-center">
-              <Image width={600} height={600} src={"/images/aboutus.jpg"} layout="intrinsic" alt="About Us Image" />
+            <div className="md:w-1/2">
+              <Image
+                src="images/about_us.jpg?height=400&width=600"
+                alt="About Us"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-xl"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="home_service_section">
-        <div className="container mx-auto px-4">
-          <div className="size-full text-center">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl text-[#ffffff]">Our Services</h2>
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl  mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Let's discuss how our IT solutions can help you achieve your business goals
+          </p>
+          <div className="flex justify-center">
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 flex items-center">
+              Contact Us
+              <ArrowRight className="ml-2" />
+            </Button>
           </div>
-          {/* <PetServicesTabs petServices={petServices} /> */}
         </div>
       </section>
 
-      {/* <section className="home_download_section">
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center">
-            <div className="home_download_img_area md:w-6/12 text-center md:text-start">
-              <Image src={"/placeholder.svg"} alt="" width={500} height={500} loading="lazy" />
-            </div>
-
-            <div className="home_about_text md:w-6/12 text-center md:text-start">
-              <div className="home_download_text_area">
-                <h2 className="text-3xl md:text-3xl lg:text-5xl">Download the app and use <span className="text-[#A084E8]">Pet D Agogy</span> anywhere</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl  mb-4">Our Services</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              We offer comprehensive IT solutions to help your business grow and succeed in the digital world
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-blue-600 mb-4">{service.icon}</div>
+                <h3 className="text-xl  mb-2">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
               </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="mt-4 text-center">
-                  <div className="home_download_qr_box1">
-                    <a href={homePageScanners.google_play_link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline" >
-                      <Image src={homePageScanners.google_scanner || "/placeholder.svg"} loading="lazy" alt="" className="qr" width={500} height={300} />
-                      <button type="button" className="w-full inline-block">
-                        <Image width={500} height={300} src="/images/google_play_but.svg" alt="" className="qr_link_but" />
-                      </button>
-                    </a>
-                  </div>
-                </div>
-
-                <div className="mt-4 text-center">
-                  <div className="home_download_qr_box1">
-                    <a href={homePageScanners.app_store_link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline" >
-                      <Image src={homePageScanners.apple_scanner || "/placeholder.svg"} alt="" className="qr" width={500} height={300} loading="lazy" />
-                      <button type="button" className="w-full inline-block">
-                        <Image width={500} height={300} src="/images/apple_play_but.svg" alt="" className="qr_link_but" />
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* {localSitters.length > 0 && (
-        <LocalSittersSection localSitters={localSitters} totalLocalSitters={totalLocalSitters} />
-      )}
 
-      {localSitters.length > 0 && (
-        <VideoSection sitterVideos={sitterVideos} totalVideos={totalVideos} />
-      )} */}
-    </>
-  );
-};
 
-export default HomePageComponent;
+    </main>
+  )
+}
 

@@ -18,6 +18,8 @@ module.exports = {
       button: '#A084E8',
      
     },
+
+    border:"border-border",
     
     extend: {},
   },
