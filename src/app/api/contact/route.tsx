@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       service: "gmail",
       auth: {
         user: "ideacanvus@gmail.com",
-        pass: 'gavz zphn jlpj bcpv',
+        pass: 'frbp ruid urpq qlhi',
       },
     })
 
