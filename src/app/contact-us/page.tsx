@@ -18,7 +18,7 @@ export default function Home() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <Image
-              src="/images/icon_transparent.png"
+              src="/images/icon_transparent.webp"
               alt="IdeaCanvus Logo"
               width={120}
               height={48}
