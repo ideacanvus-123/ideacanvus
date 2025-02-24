@@ -16,6 +16,7 @@ import {
   Target,
   Trophy,
 } from "lucide-react";
+import { useRouter } from "next/navigation"
 
 const carouselItems = [
   {
@@ -86,6 +87,8 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  
+  const router = useRouter()
 
   useEffect(() => {
     const isDark = localStorage.getItem("darkMode") === "true";
@@ -150,6 +153,7 @@ export default function Home() {
     visible: { opacity: 1, y: 0 },
   };
 
+
   return (
     <main className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 font-sans">
       {/* Enhanced Header */}
@@ -163,7 +167,7 @@ export default function Home() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon.jpg-PydKIvBqtvRdfNwX2LjL6hI7TUseSh.jpeg"
+              src="/images/icon_transparent.png"
               alt="IdeaCanvus Logo"
               width={120}
               height={48}
@@ -452,6 +456,7 @@ export default function Home() {
               className="bg-gradient-to-r from-yellow-300 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700
               text-white font-medium py-4 px-8 rounded-full transition-all duration-300 
               transform hover:scale-105 flex items-center mx-auto group"
+              onClick={() => router.push("/contact-us")}
             >
               Start a Conversation
               <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -472,7 +477,7 @@ export default function Home() {
           >
             <div className="space-y-4">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon.jpg-PydKIvBqtvRdfNwX2LjL6hI7TUseSh.jpeg"
+                 src="/images/icon_transparent.png"
                 alt="IdeaCanvus Logo"
                 width={150}
                 height={60}
