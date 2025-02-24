@@ -2,7 +2,6 @@ import './globals.css'
 import './media_screen.css'
 import 'react-toastify/dist/ReactToastify.css'
 import Script from 'next/script'
-import Head from 'next/head'
 import { Inter } from "next/font/google"
 
 const inter = Inter({ subsets: ["latin"] })

@@ -82,7 +82,7 @@ export default function ContactForm() {
         message: "",
       })
     } catch (error) {
-      alert("Failed to send message. Please try again.")
+      alert(error)
     } finally {
       setIsLoading(false)
     }
@@ -115,7 +115,7 @@ export default function ContactForm() {
         className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg"
       >
         <h2 className="text-2xl font-bold text-[#0C3C4A] mb-4">Thank You!</h2>
-        <p className="text-gray-700">Your message has been sent successfully. We'll get back to you soon.</p>
+        <p className="text-gray-700">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

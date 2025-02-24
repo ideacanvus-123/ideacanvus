@@ -1,14 +1,10 @@
 'use client'
 import ContactForm from "@/components/contact-form"
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
  
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState("");
-  
-  
+
     
    
   return (
@@ -17,11 +13,7 @@ export default function Home() {
       style={{ backgroundImage: "url('/images/contactus-bg-image.webp?height=1080&width=1920')" }}
     >
          <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent `}
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
@@ -41,18 +33,7 @@ export default function Home() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`text-lg font-light tracking-wide transition-all duration-300
-                    ${
-                      isScrolled
-                        ? "text-gray-800 hover:text-[#0C3C4A] dark:text-gray-200 dark:hover:text-[#0C3C4A]"
-                        : "text-white hover:text-[#0C3C4A]"
-                    }
-                    ${
-                      activeSection === item.href.substring(1)
-                        ? "text-[#0C3C4A] dark:text-[#0C3C4A]"
-                        : ""
-                    }
-                  `}
+                  className={`text-lg font-light tracking-wide transition-all duration-300 "text-white hover:text-[#0C3C4A]"`}
                 >
                   {item.name}
                 </a>
