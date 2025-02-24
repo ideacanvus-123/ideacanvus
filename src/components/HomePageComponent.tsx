@@ -29,11 +29,11 @@ const carouselItems = [
     image: "/images/banner-4.webp",
     description: "Custom software development that drives growth",
   },
-  {
-    title: "Turning ideas into digital excellence",
-    image: "/images/homebanner.webp",
-    description: "Innovative IT solutions for modern businesses",
-  },
+  // {
+  //   title: "Turning ideas into digital excellence",
+  //   image: "/images/homebanner.webp",
+  //   description: "Innovative IT solutions for modern businesses",
+  // },
 ];
 
 const services = [
