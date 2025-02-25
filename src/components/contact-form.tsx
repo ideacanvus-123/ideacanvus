@@ -112,7 +112,7 @@ export default function ContactForm() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg"
+        className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
       >
         <h2 className="text-2xl font-bold text-[#0C3C4A] mb-4">Thank You!</h2>
         <p className="text-gray-700">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
@@ -149,8 +149,13 @@ export default function ContactForm() {
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
             placeholder="Your name"
+            aria-describedby="name-error"
           />
-          {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+          {errors.name && (
+            <p id="name-error" className="mt-1 text-sm text-red-600">
+              {errors.name}
+            </p>
+          )}
         </motion.div>
 
         <motion.div variants={inputVariants}>
@@ -165,8 +170,13 @@ export default function ContactForm() {
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
             placeholder="your@email.com"
+            aria-describedby="email-error"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+          {errors.email && (
+            <p id="email-error" className="mt-1 text-sm text-red-600">
+              {errors.email}
+            </p>
+          )}
         </motion.div>
       </div>
 
@@ -182,8 +192,13 @@ export default function ContactForm() {
           onChange={handleChange}
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
           placeholder="Your phone number"
+          aria-describedby="phone-error"
         />
-        {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+        {errors.phone && (
+          <p id="phone-error" className="mt-1 text-sm text-red-600">
+            {errors.phone}
+          </p>
+        )}
       </motion.div>
 
       <motion.div variants={inputVariants}>
@@ -198,8 +213,13 @@ export default function ContactForm() {
           rows={4}
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
           placeholder="Write your message here..."
+          aria-describedby="message-error"
         />
-        {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+        {errors.message && (
+          <p id="message-error" className="mt-1 text-sm text-red-600">
+            {errors.message}
+          </p>
+        )}
       </motion.div>
 
       <motion.button
@@ -214,4 +234,3 @@ export default function ContactForm() {
     </motion.form>
   )
 }
-
