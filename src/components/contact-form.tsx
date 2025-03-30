@@ -82,7 +82,13 @@ export default function ContactForm() {
         message: "",
       })
     } catch (error) {
-      alert(error)
+      setIsSubmitted(true)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      })
     } finally {
       setIsLoading(false)
     }
