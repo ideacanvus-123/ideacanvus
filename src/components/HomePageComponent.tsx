@@ -23,7 +23,7 @@ import { useRouter } from "next/navigation"
 
 const carouselItems = [
   {
-    title: "Building tomorrow&apos;s technology",
+    title: "Building technology",
     image: "/images/bannerimage.webp",
     description: "Cloud solutions and digital transformation",
   },
@@ -116,12 +116,12 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update active section based on scroll position
+    
       const sections = document.querySelectorAll("section[id]")
       const scrollY = window.pageYOffset
 
       sections.forEach((current) => {
-        const section = current as HTMLElement // Cast to HTMLElement
+        const section = current as HTMLElement
         const sectionHeight = section.offsetHeight
         const sectionTop = section.offsetTop - 100
         const sectionId = section.getAttribute("id")
@@ -143,7 +143,6 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [])
 
-  // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
