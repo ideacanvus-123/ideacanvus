@@ -22,14 +22,14 @@ import {
 import { useRouter } from "next/navigation"
 
 const carouselItems = [
-  {
+ /* {
     title: "Building technology",
     image: "/images/bannerimage.webp",
     description: "Cloud solutions and digital transformation",
-  },
+  },*/
   {
     title: "Your vision, our expertise",
-    image: "/images/banner-4.webp",
+    video: "/videos/bg.mp4",
     description: "Custom software development that drives growth",
   },
 ]
@@ -216,12 +216,15 @@ export default function Home() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <Image
-              src={item.image || "/placeholder.svg"}
-              alt={item.title}
-              fill
-              className="object-cover"
-              priority={index === 0}
+      
+
+<video
+              src={item.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
             <motion.div
@@ -230,7 +233,9 @@ export default function Home() {
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6">{item.title}</h1>
+<h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-snug text-white tracking-wide drop-shadow-md mb-4 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+  {item.title}
+</h1>
               <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl">{item.description}</p>
               <button
                 className="bg-gradient-to-r from-yellow-300 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700
