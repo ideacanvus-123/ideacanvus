@@ -1,8 +1,11 @@
 "use client"
 
 import type React from "react"
+
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
+import emailjs from "@emailjs/browser"
+import { Phone, Mail, User, AtSign } from "lucide-react"
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -19,6 +22,7 @@ export default function ContactForm() {
     message: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [file, setFile] = useState<File | null>(null)
 
   const validateForm = () => {
     let isValid = true
@@ -61,37 +65,34 @@ export default function ContactForm() {
     }
 
     setIsLoading(true)
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
 
-      if (!response.ok) {
-        throw new Error("Failed to send message")
-      }
-
-      setIsSubmitted(true)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      })
-    } catch (error) {
-      setIsSubmitted(true)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      })
-    } finally {
-      setIsLoading(false)
+    const emailParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      time: new Date().toISOString(),
+      file: file ? file.name : "No file attached",
     }
+
+    // It's better to use environment variables for these values
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_ry7w2to"
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_o8n8ddb"
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "bKWhz8akueg3iADmd"
+
+    emailjs
+      .send(serviceId, templateId, emailParams, publicKey)
+      .then(() => {
+        setIsSubmitted(true)
+        setFormData({ name: "", email: "", phone: "", message: "" })
+        setFile(null)
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -102,141 +103,146 @@ export default function ContactForm() {
     }))
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  }
 
-  const inputVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-  }
 
   if (isSubmitted) {
     return (
       <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="bg-white p-8 rounded-md shadow-md max-w-2xl mx-auto"
       >
-        <h2 className="text-2xl font-bold text-[#0C3C4A] mb-4">Thank You!</h2>
-        <p className="text-gray-700">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <h2 className="text-2xl font-bold text-[#0d3c4b] mb-4">Thank You!</h2>
+        <p className="text-[#0d3c4b]">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
+        <button
           onClick={() => setIsSubmitted(false)}
-          className="mt-6 bg-[#0C3C4A] text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors"
+          className="mt-6 bg-[#0d3c4b] text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors"
         >
           Send Another Message
-        </motion.button>
+        </button>
       </motion.div>
     )
   }
 
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="space-y-6 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <motion.div variants={inputVariants}>
-          <label htmlFor="name" className="block text-sm font-medium text-[#0C3C4A] mb-1">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
-            placeholder="Your name"
-            aria-describedby="name-error"
-          />
-          {errors.name && (
-            <p id="name-error" className="mt-1 text-sm text-red-600">
-              {errors.name}
+    <div className="w-full max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 shadow-md rounded-md overflow-hidden">
+        {/* Left side - Contact Information */}
+        <div className="bg-white p-8 md:p-12">
+          <div className="mb-12">
+            <h2 className="text-lg font-medium text-[#0d3c4b] uppercase tracking-wider mb-4">Get in touch</h2>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#0d3c4b] mb-6">
+              Need Any Help For Business & Consulting
+            </h1>
+            <p className="text-[#0d3c4b] opacity-80 mb-8">
+              Please let us know if you have a question, want to leave a comment, or would like further information
+              about us.
             </p>
-          )}
-        </motion.div>
+          </div>
 
-        <motion.div variants={inputVariants}>
-          <label htmlFor="email" className="block text-sm font-medium text-[#0C3C4A] mb-1">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
-            placeholder="your@email.com"
-            aria-describedby="email-error"
-          />
-          {errors.email && (
-            <p id="email-error" className="mt-1 text-sm text-red-600">
-              {errors.email}
-            </p>
-          )}
+          <div className="space-y-8">
+            <div className="flex items-center">
+              <div className="w-12 h-12 rounded-md bg-[#0d3c4b] flex items-center justify-center mr-4">
+                <Phone className="text-white" size={20} />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#0d3c4b]">Call or WhatsApp</h3>
+                <p className="text-[#0d3c4b] opacity-80">+91 7439425415</p>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <div className="w-12 h-12 rounded-md bg-[#0d3c4b] flex items-center justify-center mr-4">
+                <Mail className="text-white" size={20} />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#0d3c4b]">Mail Us</h3>
+                <p className="text-[#0d3c4b] opacity-80">ideacanvus@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right side - Contact Form */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#0d3c4b] p-8 md:p-12">
+          <div className="mb-8">
+            <h2 className="text-lg font-medium text-white uppercase tracking-wider mb-2">Get in touch</h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-white">Feel free to get in touch</h3>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <User className="text-[#0d3c4b]" size={18} />
+              </div>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                placeholder="Full Name*"
+              />
+              {errors.name && <p className="mt-1 text-sm text-red-200">{errors.name}</p>}
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <AtSign className="text-[#0d3c4b]" size={18} />
+              </div>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                placeholder="Email*"
+              />
+              {errors.email && <p className="mt-1 text-sm text-red-200">{errors.email}</p>}
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <Phone className="text-[#0d3c4b]" size={18} />
+              </div>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                placeholder="Phone*"
+              />
+              {errors.phone && <p className="mt-1 text-sm text-red-200">{errors.phone}</p>}
+            </div>
+
+            <div className="relative">
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className="w-full px-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                placeholder="Message*"
+              />
+              {errors.message && <p className="mt-1 text-sm text-red-200">{errors.message}</p>}
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-white text-[#0d3c4b] font-medium py-3 px-4 rounded-md hover:bg-opacity-90 transition-colors disabled:opacity-70"
+            >
+              {isLoading ? "Sending..." : "Send a Message"}
+            </button>
+          </form>
         </motion.div>
       </div>
-
-      <motion.div variants={inputVariants}>
-        <label htmlFor="phone" className="block text-sm font-medium text-[#0C3C4A] mb-1">
-          Phone Number
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
-          placeholder="Your phone number"
-          aria-describedby="phone-error"
-        />
-        {errors.phone && (
-          <p id="phone-error" className="mt-1 text-sm text-red-600">
-            {errors.phone}
-          </p>
-        )}
-      </motion.div>
-
-      <motion.div variants={inputVariants}>
-        <label htmlFor="message" className="block text-sm font-medium text-[#0C3C4A] mb-1">
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0C3C4A] transition-all"
-          placeholder="Write your message here..."
-          aria-describedby="message-error"
-        />
-        {errors.message && (
-          <p id="message-error" className="mt-1 text-sm text-red-600">
-            {errors.message}
-          </p>
-        )}
-      </motion.div>
-
-      <motion.button
-        type="submit"
-        disabled={isLoading}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-full bg-[#0C3C4A] text-white py-3 px-4 rounded-md hover:bg-opacity-90 transition-all disabled:bg-opacity-50 disabled:cursor-not-allowed"
-      >
-        {isLoading ? "Sending..." : "Send Message"}
-      </motion.button>
-    </motion.form>
+    </div>
   )
 }
+
