@@ -116,7 +116,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-    
+
       const sections = document.querySelectorAll("section[id]")
       const scrollY = window.pageYOffset
 
@@ -189,10 +189,9 @@ export default function Home() {
                   key={item.name}
                   href={item.href}
                   className={`text-lg font-medium tracking-wide transition-all duration-300
-                    ${
-                      activeSection === item.href.substring(1)
-                        ? "text-[#0C3C4A] border-b-2 border-[#0C3C4A]"
-                        : "text-gray-700 hover:text-[#0C3C4A]"
+                    ${activeSection === item.href.substring(1)
+                      ? "text-[#0C3C4A] border-b-2 border-[#0C3C4A]"
+                      : "text-gray-700 hover:text-[#0C3C4A]"
                     }
                   `}
                 >
@@ -212,9 +211,8 @@ export default function Home() {
         {carouselItems.map((item, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
           >
             <Image
               src={item.image || "/placeholder.svg"}

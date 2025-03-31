@@ -75,7 +75,6 @@ export default function ContactForm() {
       file: file ? file.name : "No file attached",
     }
 
-    // It's better to use environment variables for these values
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_ry7w2to"
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_o8n8ddb"
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "bKWhz8akueg3iADmd"
@@ -103,20 +102,18 @@ export default function ContactForm() {
     }))
   }
 
-
-
   if (isSubmitted) {
     return (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-white p-8 rounded-md shadow-md max-w-2xl mx-auto"
+        className="mx-auto max-w-2xl rounded-md bg-white p-8 shadow-md"
       >
-        <h2 className="text-2xl font-bold text-[#0d3c4b] mb-4">Thank You!</h2>
+        <h2 className="mb-4 text-2xl font-medium text-[#0d3c4b]">Thank You!</h2>
         <p className="text-[#0d3c4b]">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
         <button
           onClick={() => setIsSubmitted(false)}
-          className="mt-6 bg-[#0d3c4b] text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors"
+          className="mt-6 rounded-md bg-[#0d3c4b] px-4 py-2 text-white transition-colors hover:bg-opacity-90"
         >
           Send Another Message
         </button>
@@ -125,16 +122,16 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 shadow-md rounded-md overflow-hidden">
+    <div className="mx-auto w-full max-w-7xl">
+      <div className="grid overflow-hidden rounded-md shadow-md lg:grid-cols-2">
         {/* Left side - Contact Information */}
         <div className="bg-white p-8 md:p-12">
           <div className="mb-12">
-            <h2 className="text-lg font-medium text-[#0d3c4b] uppercase tracking-wider mb-4">Get in touch</h2>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0d3c4b] mb-6">
+            <h2 className="mb-4 text-lg font-normal uppercase tracking-wider text-[#0d3c4b]">Get in touch</h2>
+            <h1 className="mb-6 text-3xl font-medium text-[#0d3c4b] md:text-4xl">
               Need Any Help For Business & Consulting
             </h1>
-            <p className="text-[#0d3c4b] opacity-80 mb-8">
+            <p className="mb-8 text-[#0d3c4b] opacity-80">
               Please let us know if you have a question, want to leave a comment, or would like further information
               about us.
             </p>
@@ -142,21 +139,21 @@ export default function ContactForm() {
 
           <div className="space-y-8">
             <div className="flex items-center">
-              <div className="w-12 h-12 rounded-md bg-[#0d3c4b] flex items-center justify-center mr-4">
+              <div className="mr-4 flex h-12 w-10 items-center justify-center rounded-md bg-[#0d3c4b]">
                 <Phone className="text-white" size={20} />
               </div>
               <div>
-                <h3 className="font-bold text-[#0d3c4b]">Call or WhatsApp</h3>
+                <h3 className="font-normal text-[#0d3c4b]">Call or WhatsApp</h3>
                 <p className="text-[#0d3c4b] opacity-80">+91 7439425415</p>
               </div>
             </div>
 
             <div className="flex items-center">
-              <div className="w-12 h-12 rounded-md bg-[#0d3c4b] flex items-center justify-center mr-4">
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-md bg-[#0d3c4b]">
                 <Mail className="text-white" size={20} />
               </div>
               <div>
-                <h3 className="font-bold text-[#0d3c4b]">Mail Us</h3>
+                <h3 className="font-normal text-[#0d3c4b]">Mail Us</h3>
                 <p className="text-[#0d3c4b] opacity-80">ideacanvus@gmail.com</p>
               </div>
             </div>
@@ -166,13 +163,13 @@ export default function ContactForm() {
         {/* Right side - Contact Form */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#0d3c4b] p-8 md:p-12">
           <div className="mb-8">
-            <h2 className="text-lg font-medium text-white uppercase tracking-wider mb-2">Get in touch</h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-white">Feel free to get in touch</h3>
+            <h2 className="mb-2 text-lg font-normal uppercase tracking-wider text-white">Get in touch</h2>
+            <h3 className="text-2xl font-medium text-white md:text-3xl">Feel free to get in touch</h3>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+              <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
                 <User className="text-[#0d3c4b]" size={18} />
               </div>
               <input
@@ -181,14 +178,14 @@ export default function ContactForm() {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                className="w-full rounded-md border-none bg-white py-3 pl-10 pr-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Full Name*"
               />
               {errors.name && <p className="mt-1 text-sm text-red-200">{errors.name}</p>}
             </div>
 
             <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+              <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
                 <AtSign className="text-[#0d3c4b]" size={18} />
               </div>
               <input
@@ -197,14 +194,14 @@ export default function ContactForm() {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                className="w-full rounded-md border-none bg-white py-3 pl-10 pr-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Email*"
               />
               {errors.email && <p className="mt-1 text-sm text-red-200">{errors.email}</p>}
             </div>
 
             <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+              <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
                 <Phone className="text-[#0d3c4b]" size={18} />
               </div>
               <input
@@ -213,7 +210,7 @@ export default function ContactForm() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                className="w-full rounded-md border-none bg-white py-3 pl-10 pr-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Phone*"
               />
               {errors.phone && <p className="mt-1 text-sm text-red-200">{errors.phone}</p>}
@@ -226,7 +223,7 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
+                className="w-full rounded-md border-none bg-white px-3 py-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Message*"
               />
               {errors.message && <p className="mt-1 text-sm text-red-200">{errors.message}</p>}
@@ -235,7 +232,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-white text-[#0d3c4b] font-medium py-3 px-4 rounded-md hover:bg-opacity-90 transition-colors disabled:opacity-70"
+              className="w-full rounded-md bg-white px-4 py-3 font-normal text-[#0d3c4b] transition-colors hover:bg-opacity-90 disabled:opacity-70"
             >
               {isLoading ? "Sending..." : "Send a Message"}
             </button>
