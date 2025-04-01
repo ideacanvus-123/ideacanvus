@@ -107,13 +107,15 @@ export default function ContactForm() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="mx-auto max-w-2xl rounded-md bg-white p-8 shadow-md"
+        className="mx-auto max-w-2xl rounded-md bg-white p-6 md:p-8 shadow-md"
       >
-        <h2 className="mb-4 text-2xl font-medium text-[#0d3c4b]">Thank You!</h2>
-        <p className="text-[#0d3c4b]">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
+        <h2 className="mb-4 text-xl font-light text-[#0d3c4b]">Thank You!</h2>
+        <p className="text-[#0d3c4b] font-light">
+          Your message has been sent successfully. We&apos;ll get back to you soon.
+        </p>
         <button
           onClick={() => setIsSubmitted(false)}
-          className="mt-6 rounded-md bg-[#0d3c4b] px-4 py-2 text-white transition-colors hover:bg-opacity-90"
+          className="mt-6 rounded-md bg-[#0d3c4b] px-4 py-2 text-white transition-colors hover:bg-opacity-90 font-light"
         >
           Send Another Message
         </button>
@@ -122,55 +124,55 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-7xl">
-      <div className="grid overflow-hidden rounded-md shadow-md lg:grid-cols-2">
+    <div className="mx-auto w-full">
+      <div className="grid overflow-hidden rounded-md lg:grid-cols-2">
         {/* Left side - Contact Information */}
-        <div className="bg-white p-8 md:p-12">
-          <div className="mb-12">
-            <h2 className="mb-4 text-lg font-normal uppercase tracking-wider text-[#0d3c4b]">Get in touch</h2>
-            <h1 className="mb-6 text-3xl font-medium text-[#0d3c4b] md:text-4xl">
+        <div className="bg-white p-6 md:p-8">
+          <div className="mb-8">
+            <h2 className="mb-3 text-sm font-light uppercase tracking-wider text-[#0d3c4b]">Get in touch</h2>
+            <h1 className="mb-4 text-2xl font-light text-[#0d3c4b] md:text-3xl">
               Need Any Help For Business & Consulting
             </h1>
-            <p className="mb-8 text-[#0d3c4b] opacity-80">
+            <p className="mb-6 text-sm font-light text-[#0d3c4b] opacity-80">
               Please let us know if you have a question, want to leave a comment, or would like further information
               about us.
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div className="flex items-center">
-              <div className="mr-4 flex h-12 w-10 items-center justify-center rounded-md bg-[#0d3c4b]">
-                <Phone className="text-white" size={20} />
+              <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#0d3c4b]">
+                <Phone className="text-white" size={18} />
               </div>
               <div>
-                <h3 className="font-normal text-[#0d3c4b]">Call or WhatsApp</h3>
-                <p className="text-[#0d3c4b] opacity-80">+91 7439425415</p>
+                <h3 className="text-sm font-light text-[#0d3c4b]">Call or WhatsApp</h3>
+                <p className="text-sm font-light text-[#0d3c4b] opacity-80">+91 7439425415</p>
               </div>
             </div>
 
             <div className="flex items-center">
-              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-md bg-[#0d3c4b]">
-                <Mail className="text-white" size={20} />
+              <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#0d3c4b]">
+                <Mail className="text-white" size={18} />
               </div>
-              <div>
-                <h3 className="font-normal text-[#0d3c4b]">Mail Us</h3>
-                <p className="text-[#0d3c4b] opacity-80">ideacanvus@gmail.com</p>
+              <div className="text-left">
+                <h3 className="text-sm font-light text-[#0d3c4b]">Mail Us</h3>
+                <p className="text-sm font-light text-[#0d3c4b] opacity-80">ideacanvus@gmail.com</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right side - Contact Form */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#0d3c4b] p-8 md:p-12">
-          <div className="mb-8">
-            <h2 className="mb-2 text-lg font-normal uppercase tracking-wider text-white">Get in touch</h2>
-            <h3 className="text-2xl font-medium text-white md:text-3xl">Feel free to get in touch</h3>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#0d3c4b] p-6 md:p-8">
+          <div className="mb-6">
+            <h2 className="mb-2 text-sm font-light uppercase tracking-wider text-white">Get in touch</h2>
+            <h3 className="text-xl font-light text-white md:text-2xl">Feel free to get in touch</h3>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                <User className="text-[#0d3c4b]" size={18} />
+                <User className="text-[#0d3c4b]" size={16} />
               </div>
               <input
                 id="name"
@@ -178,15 +180,15 @@ export default function ContactForm() {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full rounded-md border-none bg-white py-3 pl-10 pr-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full rounded-md border-none bg-white py-2.5 pl-10 pr-3 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Full Name*"
               />
-              {errors.name && <p className="mt-1 text-sm text-red-200">{errors.name}</p>}
+              {errors.name && <p className="mt-1 text-xs text-red-200">{errors.name}</p>}
             </div>
 
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                <AtSign className="text-[#0d3c4b]" size={18} />
+                <AtSign className="text-[#0d3c4b]" size={16} />
               </div>
               <input
                 id="email"
@@ -194,15 +196,15 @@ export default function ContactForm() {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full rounded-md border-none bg-white py-3 pl-10 pr-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full rounded-md border-none bg-white py-2.5 pl-10 pr-3 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Email*"
               />
-              {errors.email && <p className="mt-1 text-sm text-red-200">{errors.email}</p>}
+              {errors.email && <p className="mt-1 text-xs text-red-200">{errors.email}</p>}
             </div>
 
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                <Phone className="text-[#0d3c4b]" size={18} />
+                <Phone className="text-[#0d3c4b]" size={16} />
               </div>
               <input
                 id="phone"
@@ -210,10 +212,10 @@ export default function ContactForm() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full rounded-md border-none bg-white py-3 pl-10 pr-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full rounded-md border-none bg-white py-2.5 pl-10 pr-3 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Phone*"
               />
-              {errors.phone && <p className="mt-1 text-sm text-red-200">{errors.phone}</p>}
+              {errors.phone && <p className="mt-1 text-xs text-red-200">{errors.phone}</p>}
             </div>
 
             <div className="relative">
@@ -223,16 +225,16 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full rounded-md border-none bg-white px-3 py-3 text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full rounded-md border-none bg-white px-3 py-2.5 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                 placeholder="Message*"
               />
-              {errors.message && <p className="mt-1 text-sm text-red-200">{errors.message}</p>}
+              {errors.message && <p className="mt-1 text-xs text-red-200">{errors.message}</p>}
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full rounded-md bg-white px-4 py-3 font-normal text-[#0d3c4b] transition-colors hover:bg-opacity-90 disabled:opacity-70"
+              className="w-full rounded-md bg-white px-4 py-2.5 text-sm font-light text-[#0d3c4b] transition-colors hover:bg-opacity-90 disabled:opacity-70"
             >
               {isLoading ? "Sending..." : "Send a Message"}
             </button>
