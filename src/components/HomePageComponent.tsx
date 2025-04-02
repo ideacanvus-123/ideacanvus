@@ -233,14 +233,15 @@ export default function Home() {
               initial="hidden"
               animate="visible"
             >
-<h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-snug text-white tracking-wide drop-shadow-md mb-4 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+<h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-snug tracking-wide drop-shadow-md mb-4 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
   {item.title}
 </h1>
+
               <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl">{item.description}</p>
               <button
                 className="bg-gradient-to-r from-yellow-300 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700
                 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 
-                transform hover:scale-105 flex items-center group shadow-lg hover:shadow-yellow-500/50"
+                transform hover:scale-105 flex items-center group shadow-lg hover:shadow-yellow-500/50" onClick={() => router.push("/contact-us")}
               >
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
