@@ -24,14 +24,19 @@ import {
 import { useRouter } from "next/navigation"
 
 const carouselItems = [
-  {
-    title: "Building technology",
-    image: "/images/bannerimage.webp",
-    description: "Cloud solutions and digital transformation",
-  },
+  // {
+  //   title: "Building technology",
+  //   image: "/images/bannerimage.webp",
+  //   description: "Cloud solutions and digital transformation",
+  // },
+  // {
+  //   title: "Your vision, our expertise",
+  //   image: "/images/banner-4.webp",
+  //   description: "Custom software development that drives growth",
+  // },
   {
     title: "Your vision, our expertise",
-    image: "/images/banner-4.webp",
+    video: "/videos/bg.mp4",
     description: "Custom software development that drives growth",
   },
 ]
@@ -88,6 +93,38 @@ const services = [
     description: "Scale your team with skilled developers and experts",
   },
 ]
+
+const socialLinks = [
+  {
+    name: "facebook",
+    url: "https://www.facebook.com/people/Idea-Canvus/61574883719213/?rdid=6mttU2PiKaaJiBlL&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15x482ixY8%2F",
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+      </svg>
+    ),
+  },
+  {
+    name: "linkedin",
+    url: "https://www.linkedin.com/company/ideacanvus-solutions/",
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M22.23 0H1.77C.8 0 0 .775 0 1.73v20.54C0 23.225.8 24 1.77 24h20.46c.97 0 1.77-.775 1.77-1.73V1.73C24 .775 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.5a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm15.11 12.95h-3.56v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.97v5.7h-3.56V9h3.42v1.56h.05c.47-.89 1.6-1.83 3.29-1.83 3.52 0 4.17 2.32 4.17 5.34v6.38z" />
+      </svg>
+    ),
+  },
+  {
+    name: "instagram",
+    url: "http://instagram.com/ideacanvus/profilecard/?igsh=bTBya3J1OTY5OW9l",
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5A3.5 3.5 0 1 0 12 16a3.5 3.5 0 0 0 0-7zm5.75-.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-1.5 0v-.5a.75.75 0 0 1 .75-.75z"
+        />
+      </svg>
+    ),
+  },
+];
 
 const achievements = [
   {
@@ -198,10 +235,9 @@ export default function Home() {
                   key={item.name}
                   href={item.href}
                   className={`text-base font-normal tracking-wide transition-all duration-300
-                    ${
-                      activeSection === item.href.substring(1)
-                        ? "text-[#0C3C4A] border-b border-[#0C3C4A]"
-                        : "text-gray-700 hover:text-[#0C3C4A]"
+                    ${activeSection === item.href.substring(1)
+                      ? "text-[#0C3C4A] border-b border-[#0C3C4A]"
+                      : "text-gray-700 hover:text-[#0C3C4A]"
                     }
                   `}
                 >
@@ -237,10 +273,9 @@ export default function Home() {
                     key={item.name}
                     href={item.href}
                     className={`text-base font-normal py-2 px-4 rounded-md transition-all duration-300
-                      ${
-                        activeSection === item.href.substring(1)
-                          ? "bg-[#0C3C4A]/10 text-[#0C3C4A]"
-                          : "text-gray-700 hover:bg-[#0C3C4A]/5 hover:text-[#0C3C4A]"
+                      ${activeSection === item.href.substring(1)
+                        ? "bg-[#0C3C4A]/10 text-[#0C3C4A]"
+                        : "text-gray-700 hover:bg-[#0C3C4A]/5 hover:text-[#0C3C4A]"
                       }
                     `}
                     onClick={() => setMobileMenuOpen(false)}
@@ -262,39 +297,44 @@ export default function Home() {
         {carouselItems.map((item, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
           >
-            <Image
-              src={item.image || "/placeholder.svg?height=1200&width=2000"}
-              alt={item.title}
-              fill
-              className="object-cover"
-              priority={index === 0}
+            <video
+              src={item.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0C3C4A]/60 via-[#0C3C4A]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
             <motion.div
               className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-3xl md:text-5xl lg:text-6xl mb-6 font-normal">{item.title}</h1>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-snug tracking-wide drop-shadow-md mb-4 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                {item.title}
+              </h1>
               <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl font-light">{item.description}</p>
+
               <button
-                className="bg-gradient-to-r from-[#0C3C4A] to-[#0C3C4A]/80 hover:from-[#0C3C4A]/90 hover:to-[#0C3C4A]
-                text-white font-normal py-3 px-6 rounded-full transition-all duration-300 
-                transform hover:scale-105 flex items-center group shadow-lg"
+                className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-110 
+                flex items-center justify-center group shadow-xl 
+                hover:shadow-blue-500/50 focus:outline-none focus:ring-2 
+                focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-white"
+                onClick={() => router.push("/contact-us")}
               >
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <span className="text-lg font-bold">Get Started</span>
+                <ArrowRight className="ml-3 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
               </button>
             </motion.div>
           </div>
         ))}
         {/* Enhanced carousel indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
           {carouselItems.map((_, index) => (
             <button
               key={index}
@@ -304,7 +344,7 @@ export default function Home() {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
-        </div>
+        </div> */}
       </section>
 
       {/* Achievements Section */}
@@ -516,39 +556,21 @@ export default function Home() {
                   and development.
                 </p>
                 <div className="flex space-x-4">
-                  {["facebook", "linkedin", "github"].map((social) => (
+                  {socialLinks.map(({ name, url, icon }) => (
                     <motion.a
-                      key={social}
-                      href={`https://${social}.com`}
+                      key={name}
+                      href={url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-[#0C3C4A] transition-colors duration-300"
                       variants={staggerItem}
-                      aria-label={social}
+                      aria-label={name}
                     >
                       <div
                         className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center
-                transform transition-all duration-300 hover:scale-110 hover:rotate-6"
+          transform transition-all duration-300 hover:scale-110 hover:rotate-6"
                       >
-                        {social === "github" && (
-                          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                              fillRule="evenodd"
-                              d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.548 9.548 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.547 1.376.202 2.394.1 2.646.64.699 1.026 1.592 1.026 2.683 0 3.842-2.337 4.687-4.565 4.93.359.309.678.919.678 1.852 0 1.338-.012 2.419-.012 2.747 0 .267.18.577.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        )}
-                        {social === "linkedin" && (
-                          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                          </svg>
-                        )}
-                        {social === "facebook" && (
-                          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                          </svg>
-                        )}
+                        {icon}
                       </div>
                     </motion.a>
                   ))}
