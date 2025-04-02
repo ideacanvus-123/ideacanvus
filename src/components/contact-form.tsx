@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import emailjs from "@emailjs/browser"
-import { Phone, Mail, User, AtSign } from "lucide-react"
+import { Phone, Mail, User, AtSign, MessageSquare } from "lucide-react"
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -102,7 +102,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="mx-auto w-full">
+    <div className="mx-0 w-full">
       <div className="grid overflow-hidden rounded-md lg:grid-cols-2">
         {/* Left side - Contact Information */}
         <div className="bg-white p-6 md:p-8">
@@ -118,25 +118,55 @@ export default function ContactForm() {
           </div>
 
           <div className="space-y-6">
+
             <div className="flex items-center">
-              <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#0d3c4b]">
-                <Phone className="text-white" size={18} />
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
+                <Phone className="text-white" size={20} />
               </div>
-              <div>
-                <h3 className="text-sm font-light text-[#0d3c4b]">Call or WhatsApp</h3>
-                <p className="text-sm font-light text-[#0d3c4b] opacity-80">+91 7439425415</p>
+              <div className="text-left">
+                <h3 className="text-base font-medium text-[#0d3c4b]">Phone Us</h3>
+                <a
+                  href="mailto:ideacanvus@gmail.com"
+                  className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
+                >
+                  <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md">+91 7439425415</span>
+                </a>
               </div>
             </div>
 
+
             <div className="flex items-center">
-              <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#0d3c4b]">
-                <Mail className="text-white" size={18} />
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
+                <MessageSquare className="text-white" size={20} />
               </div>
               <div className="text-left">
-                <h3 className="text-sm font-light text-[#0d3c4b]">Mail Us</h3>
-                <p className="text-sm font-light text-[#0d3c4b] opacity-80">ideacanvus@gmail.com</p>
+                <h3 className="text-base font-medium text-[#0d3c4b]">Whatsapp</h3>
+                <a
+                  href="mailto:ideacanvus@gmail.com"
+                  className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
+                >
+                  <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md">+91 7439425415</span>
+                </a>
               </div>
             </div>
+
+
+            <div className="flex items-center">
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
+                <Mail className="text-white" size={20} />
+              </div>
+              <div className="text-left">
+                <h3 className="text-base font-medium text-[#0d3c4b]">Mail Us</h3>
+                <a
+                  href="mailto:ideacanvus@gmail.com"
+                  className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
+                >
+                  <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md block mt-1">ideacanvus@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+
           </div>
         </div>
 
