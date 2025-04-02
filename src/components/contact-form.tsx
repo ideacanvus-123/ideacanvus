@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import emailjs from "@emailjs/browser"
-import { Phone, Mail, User, AtSign, MessageSquare } from "lucide-react"
+import { Phone, Mail, User, AtSign } from "lucide-react"
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
