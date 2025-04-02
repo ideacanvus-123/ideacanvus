@@ -1,11 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import emailjs from "@emailjs/browser"
-import { Phone, Mail, User, AtSign } from "lucide-react"
+import { Phone, Mail, User, AtSign, MessageSquare } from "lucide-react"
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -75,10 +74,9 @@ export default function ContactForm() {
       file: file ? file.name : "No file attached",
     }
 
-    // It's better to use environment variables for these values
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_ry7w2to"
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_o8n8ddb"
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "bKWhz8akueg3iADmd"
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_ii4y2uq"
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_imawfcc"
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "pcbqtOa05WqXrxRXl"
 
     emailjs
       .send(serviceId, templateId, emailParams, publicKey)
@@ -103,143 +101,169 @@ export default function ContactForm() {
     }))
   }
 
-
-
-  if (isSubmitted) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="bg-white p-8 rounded-md shadow-md max-w-2xl mx-auto"
-      >
-        <h2 className="text-2xl font-bold text-[#0d3c4b] mb-4">Thank You!</h2>
-        <p className="text-[#0d3c4b]">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
-        <button
-          onClick={() => setIsSubmitted(false)}
-          className="mt-6 bg-[#0d3c4b] text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors"
-        >
-          Send Another Message
-        </button>
-      </motion.div>
-    )
-  }
-
   return (
-    <div className="w-full max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 shadow-md rounded-md overflow-hidden">
+    <div className="mx-0 w-full">
+      <div className="grid overflow-hidden rounded-md lg:grid-cols-2">
         {/* Left side - Contact Information */}
-        <div className="bg-white p-8 md:p-12">
-          <div className="mb-12">
-            <h2 className="text-lg font-medium text-[#0d3c4b] uppercase tracking-wider mb-4">Get in touch</h2>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0d3c4b] mb-6">
+        <div className="bg-white p-6 md:p-8">
+          <div className="mb-8">
+            <h2 className="mb-3 text-sm font-light uppercase tracking-wider text-[#0d3c4b]">Get in touch</h2>
+            <h1 className="mb-4 text-2xl font-light text-[#0d3c4b] md:text-3xl">
               Need Any Help For Business & Consulting
             </h1>
-            <p className="text-[#0d3c4b] opacity-80 mb-8">
+            <p className="mb-6 text-sm font-light text-[#0d3c4b] opacity-80">
               Please let us know if you have a question, want to leave a comment, or would like further information
               about us.
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
+
             <div className="flex items-center">
-              <div className="w-12 h-12 rounded-md bg-[#0d3c4b] flex items-center justify-center mr-4">
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
                 <Phone className="text-white" size={20} />
               </div>
-              <div>
-                <h3 className="font-bold text-[#0d3c4b]">Call or WhatsApp</h3>
-                <p className="text-[#0d3c4b] opacity-80">+91 7439425415</p>
+              <div className="text-left">
+                <h3 className="text-base font-medium text-[#0d3c4b]">Phone Us</h3>
+                <a
+                  href="mailto:ideacanvus@gmail.com"
+                  className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
+                >
+                  <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md">+91 7439425415</span>
+                </a>
               </div>
             </div>
 
+
             <div className="flex items-center">
-              <div className="w-12 h-12 rounded-md bg-[#0d3c4b] flex items-center justify-center mr-4">
-                <Mail className="text-white" size={20} />
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
+                <MessageSquare className="text-white" size={20} />
               </div>
-              <div>
-                <h3 className="font-bold text-[#0d3c4b]">Mail Us</h3>
-                <p className="text-[#0d3c4b] opacity-80">ideacanvus@gmail.com</p>
+              <div className="text-left">
+                <h3 className="text-base font-medium text-[#0d3c4b]">Whatsapp</h3>
+                <a
+                  href="mailto:ideacanvus@gmail.com"
+                  className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
+                >
+                  <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md">+91 7439425415</span>
+                </a>
               </div>
             </div>
+
+
+            <div className="flex items-center">
+              <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
+                <Mail className="text-white" size={20} />
+              </div>
+              <div className="text-left">
+                <h3 className="text-base font-medium text-[#0d3c4b]">Mail Us</h3>
+                <a
+                  href="mailto:ideacanvus@gmail.com"
+                  className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
+                >
+                  <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md block mt-1">ideacanvus@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+
           </div>
         </div>
 
-        {/* Right side - Contact Form */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#0d3c4b] p-8 md:p-12">
-          <div className="mb-8">
-            <h2 className="text-lg font-medium text-white uppercase tracking-wider mb-2">Get in touch</h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-white">Feel free to get in touch</h3>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                <User className="text-[#0d3c4b]" size={18} />
+        {/* Right side - Contact Form or Thank You Message */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#0d3c4b] p-6 md:p-8">
+          {isSubmitted ? (
+            <div className="flex flex-col items-center justify-center h-full">
+              <h2 className="mb-4 text-xl font-light text-white">Thank You!</h2>
+              <p className="text-white font-light text-center">
+                Your message has been sent successfully. We&apos;ll get back to you soon.
+              </p>
+              <button
+                onClick={() => setIsSubmitted(false)}
+                className="mt-6 rounded-md bg-white px-4 py-2 text-[#0d3c4b] transition-colors hover:bg-opacity-90 font-light"
+              >
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6">
+                <h2 className="mb-2 text-sm font-light uppercase tracking-wider text-white">Get in touch</h2>
+                <h3 className="text-xl font-light text-white md:text-2xl">Feel free to get in touch</h3>
               </div>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
-                placeholder="Full Name*"
-              />
-              {errors.name && <p className="mt-1 text-sm text-red-200">{errors.name}</p>}
-            </div>
 
-            <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                <AtSign className="text-[#0d3c4b]" size={18} />
-              </div>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
-                placeholder="Email*"
-              />
-              {errors.email && <p className="mt-1 text-sm text-red-200">{errors.email}</p>}
-            </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                    <User className="text-[#0d3c4b]" size={16} />
+                  </div>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full rounded-md border-none bg-white py-2.5 pl-10 pr-3 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    placeholder="Full Name*"
+                  />
+                  {errors.name && <p className="mt-1 text-xs text-red-200">{errors.name}</p>}
+                </div>
 
-            <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                <Phone className="text-[#0d3c4b]" size={18} />
-              </div>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full pl-10 pr-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
-                placeholder="Phone*"
-              />
-              {errors.phone && <p className="mt-1 text-sm text-red-200">{errors.phone}</p>}
-            </div>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                    <AtSign className="text-[#0d3c4b]" size={16} />
+                  </div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full rounded-md border-none bg-white py-2.5 pl-10 pr-3 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    placeholder="Email*"
+                  />
+                  {errors.email && <p className="mt-1 text-xs text-red-200">{errors.email}</p>}
+                </div>
 
-            <div className="relative">
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="w-full px-3 py-3 bg-white text-[#0d3c4b] border-none rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-[#0d3c4b]/60"
-                placeholder="Message*"
-              />
-              {errors.message && <p className="mt-1 text-sm text-red-200">{errors.message}</p>}
-            </div>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                    <Phone className="text-[#0d3c4b]" size={16} />
+                  </div>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full rounded-md border-none bg-white py-2.5 pl-10 pr-3 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    placeholder="Phone*"
+                  />
+                  {errors.phone && <p className="mt-1 text-xs text-red-200">{errors.phone}</p>}
+                </div>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-white text-[#0d3c4b] font-medium py-3 px-4 rounded-md hover:bg-opacity-90 transition-colors disabled:opacity-70"
-            >
-              {isLoading ? "Sending..." : "Send a Message"}
-            </button>
-          </form>
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full rounded-md border-none bg-white px-3 py-2.5 text-sm text-[#0d3c4b] placeholder:text-[#0d3c4b]/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    placeholder="Message*"
+                  />
+                  {errors.message && <p className="mt-1 text-xs text-red-200">{errors.message}</p>}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full rounded-md bg-white px-4 py-2.5 text-sm font-light text-[#0d3c4b] transition-colors hover:bg-opacity-90 disabled:opacity-70"
+                >
+                  {isLoading ? "Sending..." : "Send a Message"}
+                </button>
+              </form>
+            </>
+          )}
         </motion.div>
       </div>
     </div>
