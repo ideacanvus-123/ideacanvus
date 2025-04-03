@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import emailjs from "@emailjs/browser"
-import { Phone, Mail, User, AtSign, MessageSquare } from "lucide-react"
+import { Phone, Mail, User, AtSign } from "lucide-react"
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -137,7 +137,15 @@ export default function ContactForm() {
 
             <div className="flex items-center">
               <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d3c4b] shadow-lg">
-                <MessageSquare className="text-white" size={20} />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                  width="20"
+                  height="20"
+                >
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.091.542 4.074 1.566 5.841L.09 23.834a.75.75 0 00.976.976l5.993-1.476A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5a10.43 10.43 0 01-5.234-1.412.75.75 0 00-.589-.06l-4.45 1.096 1.096-4.45a.75.75 0 00-.06-.589A10.43 10.43 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5zm5.63-7.9c-.273-.14-1.617-.797-1.868-.888-.25-.094-.433-.14-.617.14-.183.273-.706.888-.867 1.07-.16.183-.32.207-.593.07-.273-.14-1.155-.424-2.201-1.35a8.27 8.27 0 01-1.544-1.923c-.163-.273-.017-.423.123-.563.127-.127.273-.32.413-.48.14-.163.187-.273.28-.457.093-.183.047-.34-.023-.48-.07-.14-.617-1.48-.847-2.034-.223-.533-.45-.457-.617-.467-.163-.007-.35-.01-.54-.01a1.04 1.04 0 00-.74.34c-.25.273-.974.95-.974 2.314s.997 2.686 1.14 2.874c.14.183 1.963 3.004 4.762 4.154 1.782.77 2.482.84 3.37.707.54-.08 1.617-.66 1.84-1.298.223-.64.223-1.187.16-1.298-.063-.107-.23-.173-.473-.3z" />
+                </svg>
               </div>
               <div className="text-left">
                 <h3 className="text-base font-medium text-[#0d3c4b]">Whatsapp</h3>
@@ -149,6 +157,7 @@ export default function ContactForm() {
                 </a>
               </div>
             </div>
+
 
 
             <div className="flex items-center">
