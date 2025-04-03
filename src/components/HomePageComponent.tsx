@@ -18,8 +18,6 @@ import {
   Settings,
   PenTool,
   Globe,
-  Menu,
-  X,
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -88,7 +86,6 @@ const services = [
     description: "Scale your team with skilled developers and experts",
   },
 ]
-
 const achievements = [
   {
     icon: <Trophy className="h-12 w-12" />,
@@ -115,11 +112,11 @@ const achievements = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [activeSection, setActiveSection] = useState("")
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
+    
       const sections = document.querySelectorAll("section[id]")
       const scrollY = window.pageYOffset
 
@@ -166,21 +163,11 @@ export default function Home() {
     visible: { opacity: 1, y: 0 },
   }
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
-  }
-
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Contact Us", href: "#contact" },
-  ]
-
   return (
     <main className="flex min-h-screen flex-col bg-white text-gray-900 transition-colors duration-300 font-sans">
       {/* Enhanced Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-lg">
-        <div className="container mx-auto px-4 py-3">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-lg`}>
+        <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Image
@@ -188,19 +175,23 @@ export default function Home() {
               alt="IdeaCanvus Logo"
               width={120}
               height={48}
-              className="w-auto h-10"
+              className="w-auto h-12"
             />
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
+            {/* Navigation Links */}
+            <nav className="flex items-center space-x-8">
+              {[
+                { name: "Home", href: "#home" },
+                { name: "About", href: "#about" },
+                { name: "Contact Us", href: "#contact" },
+              ].map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`text-base font-normal tracking-wide transition-all duration-300
+                  className={`text-lg font-medium tracking-wide transition-all duration-300
                     ${
                       activeSection === item.href.substring(1)
-                        ? "text-[#0C3C4A] border-b border-[#0C3C4A]"
+                        ? "text-[#0C3C4A] border-b-2 border-[#0C3C4A]"
                         : "text-gray-700 hover:text-[#0C3C4A]"
                     }
                   `}
@@ -209,56 +200,15 @@ export default function Home() {
                 </a>
               ))}
             </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-[#0C3C4A] focus:outline-none"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && (
-          <motion.div
-            className="md:hidden bg-white shadow-lg py-4"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={`text-base font-normal py-2 px-4 rounded-md transition-all duration-300
-                      ${
-                        activeSection === item.href.substring(1)
-                          ? "bg-[#0C3C4A]/10 text-[#0C3C4A]"
-                          : "text-gray-700 hover:bg-[#0C3C4A]/5 hover:text-[#0C3C4A]"
-                      }
-                    `}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         {/* Gradient Bottom Border */}
-        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0C3C4A] via-[#0C3C4A]/70 to-[#0C3C4A]/50 opacity-80"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0C3C4A] via-purple-500 to-pink-500 opacity-80"></div>
       </header>
 
       {/* Enhanced Hero Section */}
-      <section id="home" className="relative h-screen overflow-hidden pt-16">
+      <section id="home" className="relative h-screen overflow-hidden">
         {carouselItems.map((item, index) => (
           <div
             key={index}
@@ -266,30 +216,41 @@ export default function Home() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <Image
-              src={item.video || "/placeholder.svg?height=1200&width=2000"}
-              alt={item.title}
-              fill
-              className="object-cover"
-              priority={index === 0}
+      
+
+<video
+              src={item.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0C3C4A]/60 via-[#0C3C4A]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
             <motion.div
               className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-3xl md:text-5xl lg:text-6xl mb-6 font-normal">{item.title}</h1>
-              <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl font-light">{item.description}</p>
+<h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-snug tracking-wide drop-shadow-md mb-4 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+  {item.title}
+</h1>
+
+              <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl">{item.description}</p>
               <button
-                className="bg-gradient-to-r from-[#0C3C4A] to-[#0C3C4A]/80 hover:from-[#0C3C4A]/90 hover:to-[#0C3C4A]
-                text-white font-normal py-3 px-6 rounded-full transition-all duration-300 
-                transform hover:scale-105 flex items-center group shadow-lg"
-              >
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+  className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 
+             hover:from-blue-600 hover:to-blue-700 
+             text-white font-semibold py-4 px-10 rounded-full 
+             transition-all duration-300 transform hover:scale-110 
+             flex items-center justify-center group shadow-xl 
+             hover:shadow-blue-500/50 focus:outline-none focus:ring-2 
+             focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-white"
+  onClick={() => router.push("/contact-us")}
+>
+  <span className="text-lg font-bold">Get Started</span>
+  <ArrowRight className="ml-3 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+</button>
             </motion.div>
           </div>
         ))}
@@ -299,19 +260,18 @@ export default function Home() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 
+              className={`w-4 h-4 rounded-full transition-all duration-300 
                 ${index === currentSlide ? "bg-white scale-125 shadow-lg" : "bg-white/50 hover:bg-white/75"}`}
-              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </section>
 
       {/* Achievements Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -322,8 +282,8 @@ export default function Home() {
                 <div className="inline-block p-4 rounded-full bg-[#0C3C4A]/10 mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <div className="text-[#0C3C4A]">{achievement.icon}</div>
                 </div>
-                <h3 className="text-2xl md:text-3xl mb-2 text-[#0C3C4A] font-normal">{achievement.number}</h3>
-                <p className="text-gray-600 font-light">{achievement.title}</p>
+                <h3 className="text-3xl mb-2 text-[#0C3C4A]">{achievement.number}</h3>
+                <p className="text-gray-600">{achievement.title}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -331,10 +291,10 @@ export default function Home() {
       </section>
 
       {/* Enhanced About Section */}
-      <section id="about" className="py-16 md:py-20 bg-gray-50">
+      <section id="about" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
-            className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+            className="flex flex-col md:flex-row items-center gap-12"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -342,40 +302,40 @@ export default function Home() {
           >
             <motion.div className="md:w-1/2 space-y-6" variants={staggerItem}>
               <div className="inline-block rounded-lg bg-[#0C3C4A]/10 px-4 py-2 text-sm text-[#0C3C4A]">About Us</div>
-              <h2 className="text-3xl md:text-4xl leading-tight font-normal">
+              <h2 className="text-4xl md:text-5xl leading-tight">
                 Transforming Ideas into
                 <span className="text-[#0C3C4A]"> Digital Reality</span>
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed font-light">
+              <p className="text-gray-600 text-lg leading-relaxed">
                 IdeaCanvus is your trusted technology partner, delivering innovative IT solutions that help businesses
                 thrive in the digital age. We combine technical expertise with creative problem-solving to transform
                 your ideas into powerful digital solutions.
               </p>
-              <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <div className="grid grid-cols-2 gap-6">
                 {["Innovate", "Build", "Transform", "Deliver"].map((item, index) => (
                   <div key={index} className="flex items-center space-x-2 group">
                     <div
                       className="p-2 rounded-full bg-[#0C3C4A]/10 
                       transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
                     >
-                      <ArrowRight className="h-4 w-4 text-[#0C3C4A]" />
+                      <ArrowRight className="h-5 w-5 text-[#0C3C4A]" />
                     </div>
-                    <span className="text-gray-800 font-light">{item}</span>
+                    <span className="text-gray-800">{item}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
-            <motion.div className="md:w-1/2 mt-8 md:mt-0" variants={staggerItem}>
+            <motion.div className="md:w-1/2" variants={staggerItem}>
               <div className="relative">
                 <Image
                   src="/images/about_us.webp?height=400&width=600"
                   alt="About Us"
                   width={600}
                   height={400}
-                  className="rounded-lg shadow-xl transform transition-all duration-500 hover:scale-105"
+                  className="rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105"
                 />
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#0C3C4A] rounded-full opacity-20 blur-2xl"></div>
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#0C3C4A]/70 rounded-full opacity-20 blur-2xl"></div>
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#0C3C4A] rounded-full opacity-20 blur-2xl"></div>
+                <div className="absolute -top-6 -left-6 w-32 h-32 bg-purple-600 rounded-full opacity-20 blur-2xl"></div>
               </div>
             </motion.div>
           </motion.div>
@@ -383,10 +343,10 @@ export default function Home() {
       </section>
 
       {/* Enhanced Services Section */}
-      <section className="py-16 md:py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-16"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -395,30 +355,14 @@ export default function Home() {
             <div className="inline-block rounded-lg bg-[#0C3C4A]/10 px-4 py-2 text-sm text-[#0C3C4A] mb-4">
               Our Services
             </div>
-            <h2 className="text-3xl md:text-4xl mb-4 font-normal">Solutions We Provide</h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-light">
+            <h2 className="text-4xl md:text-5xl mb-4">Solutions We Provide</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               We offer comprehensive IT solutions to help your business grow and succeed in the digital world
             </p>
           </motion.div>
 
-          {/* Services Grid for Mobile */}
-          <div className="md:hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {services.slice(0, 4).map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div className="text-[#0C3C4A] mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-normal mb-2">{service.title}</h3>
-                  <p className="text-gray-600 font-light">{service.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Services Carousel for Desktop */}
-          <div className="relative hidden md:block">
+          {/* Services Carousel */}
+          <div className="relative">
             <div className="overflow-hidden">
               <motion.div
                 className="flex gap-6"
@@ -441,8 +385,8 @@ export default function Home() {
                     className="flex-shrink-0 w-[300px] bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="text-[#0C3C4A] mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-normal mb-2">{service.title}</h3>
-                    <p className="text-gray-600 font-light">{service.description}</p>
+                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                    <p className="text-gray-600">{service.description}</p>
                   </div>
                 ))}
 
@@ -453,8 +397,8 @@ export default function Home() {
                     className="flex-shrink-0 w-[300px] bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="text-[#0C3C4A] mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-normal mb-2">{service.title}</h3>
-                    <p className="text-gray-600 font-light">{service.description}</p>
+                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                    <p className="text-gray-600">{service.description}</p>
                   </div>
                 ))}
               </motion.div>
@@ -462,9 +406,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-20 bg-gray-50">
+      <section id="contact" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-4xl mx-auto text-center"
@@ -476,13 +419,13 @@ export default function Home() {
             <div className="inline-block rounded-lg bg-[#0C3C4A]/10 px-4 py-2 text-sm text-[#0C3C4A] mb-4">
               Get In Touch
             </div>
-            <h2 className="text-3xl md:text-4xl mb-6 md:mb-8 font-normal">Ready to Transform Your Business?</h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto font-light">
+            <h2 className="text-4xl md:text-5xl mb-8">Ready to Transform Your Business?</h2>
+            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
               Let&apos;s discuss how our IT solutions can help you achieve your business goals
             </p>
             <button
-              className="bg-gradient-to-r from-[#0C3C4A] to-[#0C3C4A]/80 hover:from-[#0C3C4A]/90 hover:to-[#0C3C4A]
-              text-white font-normal py-3 px-6 rounded-full transition-all duration-300 
+              className="bg-gradient-to-r from-yellow-300 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700
+              text-white font-medium py-4 px-8 rounded-full transition-all duration-300 
               transform hover:scale-105 flex items-center mx-auto group"
               onClick={() => router.push("/contact-us")}
             >
@@ -494,14 +437,14 @@ export default function Home() {
 
         {/* Enhanced Footer */}
         <motion.footer
-          className="bg-white border-t border-gray-200 w-full mt-16 md:mt-24 relative z-20"
+          className="bg-white border-t border-gray-200 w-full mt-24 relative z-20"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="container mx-auto px-4 py-8 md:py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div className="container mx-auto px-4 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               {/* About Section */}
               <motion.div className="space-y-4" variants={staggerItem}>
                 <Image
@@ -511,8 +454,8 @@ export default function Home() {
                   height={60}
                   className="mb-4"
                 />
-                <p className="text-gray-600 font-light">
-                  Transforming ideas into digital reality. We help businesses innovate and grow through creative design
+                <p className="text-gray-600">
+                  Transforming ideas into digital reality. I help businesses innovate and grow through creative design
                   and development.
                 </p>
                 <div className="flex space-x-4">
@@ -524,8 +467,8 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-[#0C3C4A] transition-colors duration-300"
                       variants={staggerItem}
-                      aria-label={social}
                     >
+                      <span className="sr-only">{social}</span>
                       <div
                         className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center
                 transform transition-all duration-300 hover:scale-110 hover:rotate-6"
@@ -557,7 +500,7 @@ export default function Home() {
 
               {/* Projects Section */}
               <motion.div className="space-y-4" variants={staggerItem}>
-                <h3 className="text-lg font-normal text-[#0C3C4A]">Projects</h3>
+                <h3 className="text-lg font-semibold text-[#0C3C4A]">Projects</h3>
                 <ul className="space-y-2">
                   {[
                     { name: "E-Commerce Platform", href: "#" },
@@ -568,7 +511,7 @@ export default function Home() {
                     <li key={idx}>
                       <a
                         href={project.href}
-                        className="text-gray-600 hover:text-[#0C3C4A] transition-all duration-300 block transform hover:translate-x-2 font-light"
+                        className="text-gray-600 hover:text-[#0C3C4A] transition-all duration-300 block transform hover:translate-x-2"
                       >
                         {project.name}
                       </a>
@@ -579,11 +522,11 @@ export default function Home() {
 
               {/* Skills Section */}
               <motion.div className="space-y-4" variants={staggerItem}>
-                <h3 className="text-lg font-normal text-[#0C3C4A]">Skills</h3>
+                <h3 className="text-lg font-semibold text-[#0C3C4A]">Skills</h3>
                 <ul className="space-y-2">
                   {["React.js", "Next.js", "Figma", "Node.js", "PHP", "Laravel", "Angular"].map((skill, idx) => (
                     <li key={idx}>
-                      <span className="text-gray-600 hover:text-[#0C3C4A] transition-all duration-300 block transform hover:translate-x-2 font-light">
+                      <span className="text-gray-600 hover:text-[#0C3C4A] transition-all duration-300 block transform hover:translate-x-2">
                         {skill}
                       </span>
                     </li>
@@ -591,9 +534,9 @@ export default function Home() {
                 </ul>
               </motion.div>
 
-              {/* Pages Section */}
+              {/* Blog Section */}
               <motion.div className="space-y-4" variants={staggerItem}>
-                <h3 className="text-lg font-normal text-[#0C3C4A]">Pages</h3>
+                <h3 className="text-lg font-semibold text-[#0C3C4A]">Pages</h3>
                 <ul className="space-y-2">
                   {[
                     { name: "Home", href: "/" },
@@ -603,7 +546,7 @@ export default function Home() {
                     <li key={idx}>
                       <a
                         href={post.href}
-                        className="text-gray-600 hover:text-[#0C3C4A] transition-all duration-300 block transform hover:translate-x-2 font-light"
+                        className="text-gray-600 hover:text-[#0C3C4A] transition-all duration-300 block transform hover:translate-x-2"
                       >
                         {post.name}
                       </a>
@@ -614,9 +557,9 @@ export default function Home() {
             </div>
 
             {/* Copyright Section */}
-            <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200 text-center">
-              <p className="text-gray-600 font-light">
-                &copy; {new Date().getFullYear()} IdeaCanvus. All rights reserved.
+            <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+              <p className="text-gray-600">
+                &copy; {new Date().getFullYear()} Your Portfolio Name. All rights reserved.
               </p>
             </div>
           </div>
