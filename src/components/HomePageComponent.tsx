@@ -37,7 +37,7 @@ const carouselItems = [
   {
     title: "Crafting Smart Digital Solutions for a Smarter Tomorrow",
     video: "/videos/bg.mp4",
-    description: "Sketching Ideas, Coding Dreams....",
+    description: "At IdeaCanvus, we specialize in creating reliable, secure, and beautiful software that empowers businesses to thrive in a connected world.",
   },
 ]
 
@@ -316,32 +316,46 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-snug tracking-wide drop-shadow-md mb-4">
-          <span className="block bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-            Crafting Smart Digital Solutions for a
-          </span>
-          <span className="block bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-            Smarter Tomorrow
-          </span>
-        </h1>
+
+<h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-snug tracking-wide drop-shadow-2xl mb-6">
+  <span className="block">
+    <span className="text-white">Crafting</span>{" "}
+    <span className="bg-gradient-to-r from-indigo-400 via-pink-500 to-red-400 bg-clip-text text-transparent filter brightness-150 drop-shadow-md">
+      Smart
+    </span>{" "}
+    <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent filter brightness-125 drop-shadow-md">
+      Digital
+    </span>{" "}
+    <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent filter brightness-125 drop-shadow-md">
+      Solutions
+    </span>{" "}
+    for a
+  </span>
+  <span className="block mt-2">
+    <span className="bg-gradient-to-r from-indigo-400 via-pink-500 to-red-400 bg-clip-text text-transparent filter brightness-150 drop-shadow-md">
+      Smarter
+    </span>{" "}
+    <span className="text-white">Tomorrow</span>
+  </span>
+</h1>
+
+
+
 
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl font-light">
           {item.description}
         </p>
-
         <button
-  className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 
-             hover:from-blue-600 hover:to-blue-700 
-             text-white font-semibold py-4 px-10 rounded-full 
-             transition-all duration-300 transform hover:scale-110 
-             flex items-center justify-center group shadow-xl 
-             hover:shadow-blue-500/50 focus:outline-none focus:ring-2 
-             focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-white"
+  className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-5 py-2 rounded-full transition duration-300 flex items-center group w-fit"
   onClick={() => router.push("/contact-us")}
 >
-  <span className="text-lg font-bold">Get Started</span>
-  <ArrowRight className="ml-3 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+  <span className="font-medium">Get Started</span>
+  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
 </button>
+
+
+
+
       </motion.div>
     </div>
   ))}
