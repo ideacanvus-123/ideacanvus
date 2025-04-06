@@ -126,7 +126,7 @@ export default function ContactForm() {
               <div className="text-left">
                 <h3 className="text-base font-medium text-[#0d3c4b]">Phone Us</h3>
                 <a
-                  href="mailto:ideacanvus@gmail.com"
+                  href=""
                   className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
                 >
                   <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md">+91 7439425415</span>
@@ -150,7 +150,7 @@ export default function ContactForm() {
               <div className="text-left">
                 <h3 className="text-base font-medium text-[#0d3c4b]">Whatsapp</h3>
                 <a
-                  href="mailto:ideacanvus@gmail.com"
+                  href=""
                   className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
                 >
                   <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md">+91 7439425415</span>
@@ -167,7 +167,7 @@ export default function ContactForm() {
               <div className="text-left">
                 <h3 className="text-base font-medium text-[#0d3c4b]">Mail Us</h3>
                 <a
-                  href="mailto:ideacanvus@gmail.com"
+                  href=""
                   className="text-sm font-light text-[#0d3c4b] hover:text-[#0d3c4b]/80 transition-colors"
                 >
                   <span className="bg-[#0d3c4b]/10 px-2 py-1 rounded-md block mt-1">ideacanvus@gmail.com</span>

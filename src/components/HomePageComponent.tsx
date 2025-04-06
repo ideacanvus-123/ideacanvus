@@ -118,33 +118,31 @@ const socialLinks = [
     url: "http://instagram.com/ideacanvus/profilecard/?igsh=bTBya3J1OTY5OW9l",
     icon: (
       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-        <path
-          d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5A3.5 3.5 0 1 0 12 16a3.5 3.5 0 0 0 0-7zm5.75-.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-1.5 0v-.5a.75.75 0 0 1 .75-.75z"
-        />
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5A3.5 3.5 0 1 0 12 16a3.5 3.5 0 0 0 0-7zm5.75-.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-1.5 0v-.5a.75.75 0 0 1 .75-.75z" />
       </svg>
     ),
   },
-];
+]
 
 const achievements = [
   {
     icon: <Trophy className="h-12 w-12" />,
-    number: "500+",
+    number: "10+",
     title: "Projects Completed",
   },
   {
     icon: <Users className="h-12 w-12" />,
-    number: "100+",
+    number: "15+",
     title: "Happy Clients",
   },
   {
     icon: <Target className="h-12 w-12" />,
-    number: "10+",
+    number: "3+",
     title: "Years Experience",
   },
   {
     icon: <Rocket className="h-12 w-12" />,
-    number: "50+",
+    number: "10+",
     title: "Expert Team",
   },
 ]
@@ -235,9 +233,10 @@ export default function Home() {
                   key={item.name}
                   href={item.href}
                   className={`text-base font-normal tracking-wide transition-all duration-300
-                    ${activeSection === item.href.substring(1)
-                      ? "text-[#0C3C4A] border-b border-[#0C3C4A]"
-                      : "text-gray-700 hover:text-[#0C3C4A]"
+                    ${
+                      activeSection === item.href.substring(1)
+                        ? "text-[#0C3C4A] border-b border-[#0C3C4A]"
+                        : "text-gray-700 hover:text-[#0C3C4A]"
                     }
                   `}
                 >
@@ -273,9 +272,10 @@ export default function Home() {
                     key={item.name}
                     href={item.href}
                     className={`text-base font-normal py-2 px-4 rounded-md transition-all duration-300
-                      ${activeSection === item.href.substring(1)
-                        ? "bg-[#0C3C4A]/10 text-[#0C3C4A]"
-                        : "text-gray-700 hover:bg-[#0C3C4A]/5 hover:text-[#0C3C4A]"
+                      ${
+                        activeSection === item.href.substring(1)
+                          ? "bg-[#0C3C4A]/10 text-[#0C3C4A]"
+                          : "text-gray-700 hover:bg-[#0C3C4A]/5 hover:text-[#0C3C4A]"
                       }
                     `}
                     onClick={() => setMobileMenuOpen(false)}
@@ -297,17 +297,11 @@ export default function Home() {
         {carouselItems.map((item, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
           >
-            <video
-              src={item.video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
+            <video src={item.video} autoPlay loop muted playsInline className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
             <motion.div
               className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
@@ -382,11 +376,11 @@ export default function Home() {
           >
             <motion.div className="md:w-1/2 space-y-6" variants={staggerItem}>
               <div className="inline-block rounded-lg bg-[#0C3C4A]/10 px-4 py-2 text-sm text-[#0C3C4A]">About Us</div>
-              <h2 className="text-3xl md:text-4xl leading-tight font-normal">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-normal text-center md:text-left">
                 Transforming Ideas into
                 <span className="text-[#0C3C4A]"> Digital Reality</span>
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed font-light">
+              <p className="text-gray-600 text-base md:text-lg lg:text-xl leading-relaxed font-light">
                 IdeaCanvus is your trusted technology partner, delivering innovative IT solutions that help businesses
                 thrive in the digital age. We combine technical expertise with creative problem-solving to transform
                 your ideas into powerful digital solutions.
@@ -435,23 +429,23 @@ export default function Home() {
             <div className="inline-block rounded-lg bg-[#0C3C4A]/10 px-4 py-2 text-sm text-[#0C3C4A] mb-4">
               Our Services
             </div>
-            <h2 className="text-3xl md:text-4xl mb-4 font-normal">Solutions We Provide</h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-light">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl mb-4 font-normal">Solutions We Provide</h2>
+            <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto font-light">
               We offer comprehensive IT solutions to help your business grow and succeed in the digital world
             </p>
           </motion.div>
 
           {/* Services Grid for Mobile */}
           <div className="md:hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-4">
               {services.slice(0, 4).map((service, index) => (
                 <div
                   key={index}
                   className="bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="text-[#0C3C4A] mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-normal mb-2">{service.title}</h3>
-                  <p className="text-gray-600 font-light">{service.description}</p>
+                  <h3 className="text-xl md:text-2xl font-normal mb-3">{service.title}</h3>
+                  <p className="text-gray-600 text-base md:text-lg font-light">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -478,11 +472,11 @@ export default function Home() {
                 {services.map((service, index) => (
                   <div
                     key={`first-${index}`}
-                    className="flex-shrink-0 w-[300px] bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+                    className="flex-shrink-0 w-[350px] bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="text-[#0C3C4A] mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-normal mb-2">{service.title}</h3>
-                    <p className="text-gray-600 font-light">{service.description}</p>
+                    <h3 className="text-xl md:text-2xl font-normal mb-3">{service.title}</h3>
+                    <p className="text-gray-600 text-base md:text-lg font-light">{service.description}</p>
                   </div>
                 ))}
 
@@ -490,11 +484,11 @@ export default function Home() {
                 {services.map((service, index) => (
                   <div
                     key={`second-${index}`}
-                    className="flex-shrink-0 w-[300px] bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+                    className="flex-shrink-0 w-[350px] bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="text-[#0C3C4A] mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-normal mb-2">{service.title}</h3>
-                    <p className="text-gray-600 font-light">{service.description}</p>
+                    <h3 className="text-xl md:text-2xl font-normal mb-3">{service.title}</h3>
+                    <p className="text-gray-600 text-base md:text-lg font-light">{service.description}</p>
                   </div>
                 ))}
               </motion.div>

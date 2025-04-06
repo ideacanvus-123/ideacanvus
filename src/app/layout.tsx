@@ -1,30 +1,35 @@
-import './globals.css'
-import './media_screen.css'
-import 'react-toastify/dist/ReactToastify.css'
-import Script from 'next/script'
+import type React from "react"
+import "./globals.css"
+import "./media_screen.css"
+import "react-toastify/dist/ReactToastify.css"
+import Script from "next/script"
 import { Inter } from "next/font/google"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "IdeaCanvus - IT Services & Solutions",
-  description: "Idea Canvus specializes in innovative IT solutions, cloud computing, and digital transformation strategies",
+  description:
+    "IdeaCanvus specializes in innovative IT solutions, cloud computing, and digital transformation strategies",
 }
 
-export default function RootLayout({  
-  children,
-}: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <title>Idea Canvas - Transform your business with cutting-edge technology solutions</title>
-        <meta name="description" content="Idea Canvas specializes in innovative IT solutions, cloud computing, and digital transformation strategies." />
-        
+        <meta
+          name="description"
+          content="IdeaCanvus specializes in innovative IT solutions, cloud computing, and digital transformation strategies."
+        />
+
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="icon" type="image/x-icon" href="/images/icon.jpg" />
+   
+        <link rel="icon" type="image/png" href="/images/icon.png" sizes="48x48" />
+  
         <link href="/css/all.min.css" rel="stylesheet" />
 
         {/* Preconnect to external domains */}
@@ -34,10 +39,10 @@ export default function RootLayout({
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
       </head>
-      
-      <body className={inter.className}>  
+
+      <body className={inter.className}>
         {children}
-        
+
         {/* Load JavaScript files */}
         <Script type="module" src="/js/custom.js" strategy="lazyOnload" />
         <Script src="https://js.stripe.com/v3/" strategy="afterInteractive" />
@@ -45,6 +50,4 @@ export default function RootLayout({
     </html>
   )
 }
-
-
 
